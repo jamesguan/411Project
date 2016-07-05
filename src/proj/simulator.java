@@ -74,9 +74,10 @@ public class simulator {
 			    		System.out.println("This is going to be a label");
 			    	}
 			    	*/
-			    	
+			    	System.out.print(temp[i] + " ");
 			    	
 			    }
+			    System.out.println("");
 			    storeInstruction(temp);
 			    //System.out.println("Counter: " + counter);
 			    counter++;
@@ -93,7 +94,9 @@ public class simulator {
 			//\\s+|\\t+ Matches multiple spaces or tabs'
 			
 		    String [] temp = str.split("[\\x00-\\x20]+|[\\x7F-\\xFF]+");
+		    
 		    for (int i = 0; i < temp.length; i++){
+		    	
 		    	//temp[i] = temp[i];
 		    	//System.out.println(temp[i]);
 		    	/*
@@ -126,6 +129,7 @@ public class simulator {
 		switch(temp[position]){
 			case "LW":
 				instruction = "LW";
+				MEMORY.addInstruction(new LW(grabDigits(temp[position+1]), temp[position+2]));
 				
 				break;
 			case "SW":
@@ -191,9 +195,23 @@ public class simulator {
 		
 	}
 	public static int grabDigits(String temp){
+		int val = 0;
+		if (temp.contains("(|)")){
+			String [] hold = temp.split("(");
+			for (int i = 0; i < hold.length; i++){
+				hold[i].replaceAll("(", "");
+				hold[i].replaceAll(")", "");
+				hold[i].replaceAll("R", "");
+				
+			}
+			val = Integer.parseInt(hold[0]) + Integer.parseInt(hold[1]);
+			
+		}
+		else {
 		//int val = Integer.parseInt(temp.replace("[^\\d]", ""));
 		//System.out.println(temp.replaceAll("[^0-9]+", ""));
-		int val = Integer.parseInt(temp.replaceAll("^\\D", ""));
+			val = Integer.parseInt(temp.replaceAll("^\\D", ""));
+		}
 		//int val = 0;
 		//System.out.println("Original: " +  " Val: " + val);
 		return val;

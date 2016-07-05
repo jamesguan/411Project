@@ -2,9 +2,12 @@ package processor;
 
 public class RegisterFile {
 	private int registers [];
-	private boolean writeDisabled;
+	private boolean writeDisable;
 	
 	public void disableWrite(){
-		this.writeDisabled = true;
+		this.writeDisable = true;
+	}
+	public void enableWrite(){
+		this.writeDisable = false;
 	}
 }
