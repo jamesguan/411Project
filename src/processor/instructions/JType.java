@@ -7,4 +7,9 @@ public class JType extends Instruction {
 		super(opcode);
 		this.target = target;
 	}
+	
+	public String toString(){
+		String str = " target: " + target;
+		return str;
+	}
 }

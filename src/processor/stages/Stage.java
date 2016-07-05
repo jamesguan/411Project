@@ -1,5 +1,7 @@
 package processor.stages;
 
-public class Stage {
+public abstract class Stage {
 	private int cycles;
+	
+	public abstract void run();
 }

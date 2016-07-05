@@ -11,4 +11,10 @@ public class IType extends Instruction{
 		this.rt = rt;
 		this.immediate = immediate;
 	}
+	
+	public String toString(){
+		String str = translateOpCode() + " rs: " + rs + " rt: " + rt
+				+ " immediate: " + immediate;
+		return str;
+	}
 }

@@ -1,5 +1,9 @@
 package processor.instructions;
 
 public class LW extends IType{
-	private static final int LW = 0x23;
+	
+	
+	public LW(int rs, int rt, int immediate){
+		super(LW, rs, rt, immediate);
+	}
 }

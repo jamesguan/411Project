@@ -1,5 +1,12 @@
 package processor.stages;
 
-public class WriteBack extends Stage {
+import processor.*;
 
+public class WriteBack extends Stage {
+	
+	private PipelineRegister mem_wb;
+	private RegisterFile registerFile;
+	public void run(){
+		
+	}
 }

@@ -1,5 +1,9 @@
 package processor.instructions;
 
 public class BNE extends IType{
-	private static final int BNE = 0x5;
+
+	
+	public BNE(int rs, int rt, int immediate){
+		super(BNE, rs, rt, immediate);
+	}
 }

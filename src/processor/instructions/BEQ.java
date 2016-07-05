@@ -1,5 +1,9 @@
 package processor.instructions;
 
 public class BEQ extends IType{
-	private static final int BEQ = 0x4;
+	
+	
+	public BEQ(int rs, int rt, int immediate){
+		super(BEQ, rs, rt, immediate);
+	}
 }

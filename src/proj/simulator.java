@@ -41,6 +41,7 @@ public class simulator {
 			parseDataFile(dataReader);
 			fileReader.close();
 			dataReader.close();
+			System.out.println(MEMORY);
 
 		}
 		catch (FileNotFoundException ex){
@@ -120,23 +121,24 @@ public class simulator {
 		}
 		
 		instruction = temp[position];
-		System.out.println(instruction);
+		//System.out.println(instruction);
 		
 		switch(temp[position]){
 			case "LW":
 				instruction = "LW";
+				
 				break;
 			case "SW":
 				instruction = "SW";
 				break;
 			case "LI":
-				instruction = "LI";
+				MEMORY.addInstruction(new LI(0,grabDigits(temp[position+1]), grabDigits(temp[position+2])));
 				break;
 			case "ADD":
-				instruction = "ADD";
+				MEMORY.addInstruction(new ADD(grabDigits(temp[position+2]), grabDigits(temp[position+3]), grabDigits(temp[position+1]), 0));
 				break;
 			case "ADDI":
-				instruction = "ADDI";
+				MEMORY.addInstruction(new ADDI(grabDigits(temp[position+2]),grabDigits(temp[position+1]), grabDigits(temp[position+3])));
 				break;
 			case "MULT":
 				instruction = "MULT";
@@ -145,19 +147,19 @@ public class simulator {
 				instruction = "MULTI";
 				break;
 			case "SUB":
-				instruction = "SUB";
+				MEMORY.addInstruction(new SUB(grabDigits(temp[position+2]), grabDigits(temp[position+3]), grabDigits(temp[position+1]), 0));
 				break;
 			case "SUBI":
 				instruction = "SUBI";
 				break;
 			case "AND":
-				instruction = "AND";
+				MEMORY.addInstruction(new AND(grabDigits(temp[position+2]), grabDigits(temp[position+3]), grabDigits(temp[position+1]), 0));
 				break;
 			case "ANDI":
 				instruction = "ANDI";
 				break;
 			case "OR":
-				instruction = "OR";
+				MEMORY.addInstruction(new OR(grabDigits(temp[position+2]), grabDigits(temp[position+3]), grabDigits(temp[position+1]), 0));
 				break;
 			case "ORI":
 				instruction = "ORI";
@@ -188,5 +190,12 @@ public class simulator {
 		
 		
 	}
-	//public static void 
+	public static int grabDigits(String temp){
+		//int val = Integer.parseInt(temp.replace("[^\\d]", ""));
+		//System.out.println(temp.replaceAll("[^0-9]+", ""));
+		int val = Integer.parseInt(temp.replaceAll("^\\D", ""));
+		//int val = 0;
+		//System.out.println("Original: " +  " Val: " + val);
+		return val;
+	}
 }

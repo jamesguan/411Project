@@ -1,5 +1,9 @@
 package processor.instructions;
 
 public class J extends JType{
-	private static final int J = 0x2;
+
+	
+	public J(int target){
+		super(J, target);
+	}
 }
