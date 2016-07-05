@@ -9,6 +9,6 @@ public class ProgramCounter extends Register {
 	}
 	
 	public void increment(){
-		this.address+= 4;
+		this.address+= 1;
 	}
 }
